@@ -2220,9 +2220,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 491436770}
-  camTransform: {fileID: 963194228}
   Offset: {x: 0, y: 0, z: 0}
   SmoothTime: 0.1
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  FadedAlpha: 0.33
+  FadingMode: 0
+  ChecksPerSecond: 10
+  FadeFPS: 30
+  FadeSpeed: 1.5
 --- !u!1 &986108421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,7 +3046,8 @@ GameObject:
   - component: {fileID: 1476293805}
   - component: {fileID: 1476293804}
   - component: {fileID: 1476293803}
-  m_Layer: 0
+  - component: {fileID: 1476293807}
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3132,6 +3140,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1429177647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1476293807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476293802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87054642e9ee7594a987f390b7c54d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  Position: {x: 0, y: 0, z: 0}
+  Materials: []
+  InitialAlpha: 0
 --- !u!1 &1484187597
 GameObject:
   m_ObjectHideFlags: 0
