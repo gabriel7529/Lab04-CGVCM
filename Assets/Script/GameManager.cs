@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] bool m_playerWins = false;
+    public GameObject[] exits;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,24 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BeginingOfGame()
     {
-        Debug.Log("Funcion1");
+        Debug.Log("Inicio del Juego ");
+        foreach (GameObject exit in exits)
+        {
+            if (exit != null)
+                exit.SetActive(false);
+        }
+
+        // Activar uno aleatorio
+        int randomIndex = Random.Range(0, exits.Length);
+        if (exits[randomIndex] != null)
+            exits[randomIndex].SetActive(true);
+
         yield return null;
     }
 
     IEnumerator MainPartOfGame()
     {
-        Debug.Log("Funcion2");
+        Debug.Log("Busca la zona de extracción");
 
         while (!m_playerWins)
         {

@@ -7,9 +7,10 @@ public class ZombieSpawner : MonoBehaviour
 {
     [Header("Zombie Settings")]
     public GameObject zombiePrefab;            // Prefab del zombie con NavMesh, AI, Ragdoll
-    public int cantidadZombies = 5;
-    public float radioSpawn = 20f;
+    public int cantidadZombies = 2;
+    public float radioSpawn = 5f;
     public Transform jugador;
+    public float duracionSpawn = 30f;
 
     [Header("Tiempo entre oleadas")]
     public float tiempoEntreSpawns = 5f;
@@ -23,7 +24,7 @@ public class ZombieSpawner : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= tiempoProximoSpawn)
+        if (Time.time >= tiempoProximoSpawn && Time.time <= duracionSpawn)
         {
             SpawnZombies();
             tiempoProximoSpawn = Time.time + tiempoEntreSpawns;
