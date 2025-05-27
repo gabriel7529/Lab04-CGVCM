@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -63,5 +64,16 @@ public class Movement : MonoBehaviour
         // Aplicar la rotación vertical solo a la cámara
         cameraPersonajePrincipal.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Zombie"))
+        {
+            Debug.Log("Colisión con zombie. Reiniciando nivel...");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        
     }
 }

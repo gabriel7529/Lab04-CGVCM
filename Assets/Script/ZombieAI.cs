@@ -1,7 +1,7 @@
 
-using Unity.AI;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class ZombieAI : MonoBehaviour
 {
@@ -23,6 +23,11 @@ public class ZombieAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = target.position;
+        if (target != null)
+        {
+            agent.destination = target.position;
+        }
     }
+
+
 }
