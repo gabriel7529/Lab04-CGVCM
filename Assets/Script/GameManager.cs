@@ -38,7 +38,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndOfGame()
     {
-        Debug.Log("Funcion3");
+        //TODO: Ir al siguiente escenario
         yield return null;
+    }
+
+    public void PlayerReacheExit()
+    {
+        m_playerWins = true;
     }
 }
