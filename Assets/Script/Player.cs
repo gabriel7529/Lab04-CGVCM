@@ -26,8 +26,14 @@ public class Player : MonoBehaviour
     public int currentIdCamera = 0;
     private Transform cameraTransform;
 
+    bool alreadyDeath = false;
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip backgroundMusic;
+
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager.PlayMusic(backgroundMusic);
         controller = GetComponent<CharacterController>();
         speed = normalSpeed;
 
@@ -183,10 +189,20 @@ public class Player : MonoBehaviour
 
     private void CheckDeath()
     {
-        if(transform.position.y < -10F)
+        if(!alreadyDeath && transform.position.y < -10F)
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
+            alreadyDeath = true;
+            StartCoroutine(RestartScene());
         }
+    }
+
+    IEnumerator RestartScene()
+    {
+        audioManager.PlaySFX(audioManager.deathSound);
+        
+        yield return new WaitForSeconds(1f);
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }

@@ -5,12 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class WinMinijuegoItemTriggerHandler : MonoBehaviour
 {
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+    private bool already = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!already && other.CompareTag("Player"))
         {
-            Destroy(transform.parent.gameObject);
-            SceneManager.LoadScene("SampleScene");
+            already = true;
+            transform.parent.transform.localScale = Vector3.zero;
+            //* Destroy(transform.parent.gameObject);
+            StartCoroutine(GoNextScene());
         }
+    }
+
+    IEnumerator GoNextScene()
+    {
+        audioManager.PlaySFX(audioManager.winMinijuegoSound);
+        yield return new WaitForSeconds(6f);
+
+        SceneManager.LoadScene("SampleScene");
     }
 }
