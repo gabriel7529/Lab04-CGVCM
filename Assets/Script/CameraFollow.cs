@@ -7,7 +7,7 @@ public class CameraFollowWithFade : MonoBehaviour
     [Header("Camera Follow Settings")]
     public Transform Target;                  // Target to follow
     public Vector3 Offset;                    // Offset from target
-    public float SmoothTime = 0.5f;           // Smooth follow time
+    public float SmoothTime = 0.7f;           // Smooth follow time
     private Vector3 velocity = Vector3.zero;
 
     [Header("Fade Settings")]
